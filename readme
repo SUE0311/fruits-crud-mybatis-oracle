@@ -1,0 +1,36 @@
+<개요>
+1. 어플리케이션 명 : fruits-crud application.
+2. 작성자 : 이지수
+3. 작성일 : 2013.06.24
+
+<소개>
+이것은 데이터베이스와 연동되는 심플한 CRUD 어플리케이션입니다. 
+과일 테이블에 있는 과일들을 검색(전체, id), 수정, 삭제 할 수 있습니다.
+iBatis/MyBatis를 활용법을 공부하기 위해서 만들어보았습니다. 
+
+<작업 환경>
+Eclipse IDE - Java project
+Oracle 11g
+
+<테스트 순서 및 방법>
+
+1. 이클립스에 프로젝트를 import 하십시오.
+- ojdbc6, mybatis jar 파일이 lib 폴더에 포함되어 있습니다. 
+
+2. sql 폴더에 있는 script.sql로 테이블을 만드십시오. 
+- TABLE은 'Fruits'입니다. 
+- column은 `no`, `name`, `servingSize`, `calories`, 'carbohydrate', 'fat', 'protein'입니다.
+
+3. jdbc와 oracle connect 여부를 확인하십시오.
+- con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","scott", "tiger");
+-> 'scott', 'tiger' 부분을 본인 데이터베이스의 아이디와 비밀번호로 변경하십시오.
+- test 패키지에 ConnectionTest.java를 run하셔서 "Connection Success!"가 출력되면 연결 성공입니다. 
+
+4. src폴더의 Mybatis-config.xml의 파일에서 아이디와 비밀번호를 변경해주십시오. 
+- <property name="username" value="scott"/> -> 'scott' 값 변경
+- <property name="password" value="tiger"/> -> 'tiger' 값 변경
+
+5. 메인 test는 test 패키지에 'FruitsSessionTest.java'를 run하시면 됩니다.(모든 결과는 console창에서 확인할 수 있음)
+ 
+6. 'FruitsSessionTest.java'를 run해서 모든 결과를 출력하는 test.selectAll();이 제대로 작동하면, 
+selectFruitsByName(), insertFruits(), updateFruits(), deleteFruits()의 각 메서드의 매개변수를 바뀌가며 테스트해보십시오. 

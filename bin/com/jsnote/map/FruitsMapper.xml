@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jsnote.map.FruitsMapper">
+
+	<select id="selectFruitsByName" parameterType="String" resultType="Fruits">
+		SELECT * FROM FRUITS
+		WHERE name = #{name}
+	</select>
+
+	<select id="selectAll" resultType="Fruits">
+		SELECT * FROM FRUITS
+		order by no
+	</select>
+	
+	<insert id="insertFruits" parameterType="Fruits">
+		INSERT INTO FRUITS(no, name, servingSize, calories, carbohydrate, fat, protein)
+		VALUES (#{no}, #{name}, #{servingSize}, #{calories}, #{carbohydrate}, #{fat}, #{protein})
+	</insert>
+
+	<update id="updateFruits" parameterType="Fruits">
+		UPDATE FRUITS SET 
+			name = #{name}
+		WHERE no = #{no}
+	</update>
+
+	<delete id="deleteFruits" parameterType="String">
+		DELETE FROM FRUITS
+		WHERE name = #{name}
+	</delete>
+</mapper>
